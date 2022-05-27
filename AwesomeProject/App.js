@@ -85,9 +85,7 @@ function MyDataScreen({ navigation }) {
 
   const mapData = () => {
     return myData.map((element) => {
-      return (
-        <Text>placeholder</Text>
-      )
+      return <Text>placeholder</Text>;
     });
   };
 
@@ -98,11 +96,11 @@ function MyDataScreen({ navigation }) {
           containerStyle={{
             alignItems: "center",
             marginVertical: "2%",
-            paddingHorizontal:'10%',
+            paddingHorizontal: "10%",
             paddingBottom: "10%",
           }}
         >
-          <Text style={{alignItems: 'left' }}>Your Pulse is ... </Text>
+          <Text style={{ alignItems: "left" }}>Your Pulse is ... </Text>
           <View>
             <Image
               source={require("/Users/austinfujimori/Desktop/Student-Pulse/AwesomeProject/images/pulse.png")}
@@ -119,65 +117,64 @@ function MyDataScreen({ navigation }) {
 
 function MyClassesScreen({ navigation }) {
   //in prep for backend
+  //limit description
   const myClasses = [
     {
       name: "AT Math",
-      description: "math",
+      description: "cool math",
     },
     {
       name: "AP Physics 2",
-      description: "physics",
+      description: "very stressful",
     },
     {
       name: "AP Statistics",
       description: "statistics",
     },
     {
-      name: "Test",
-      description: "test",
-    },
-    {
-      name: "Test",
-      description: "Test",
-    },
-    {
-      name: "Test",
-      description: "Test",
-    },
-    {
-      name: "Test",
-      description: "Test",
+      name: "Tester",
+      description: "TesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTester",
     },
   ];
 
   const mapClasses = () => {
     return myClasses.map((element) => {
       return (
-        <Card
-          containerStyle={{
-            alignItems: "left",
+        <View
+          style={{
+            alignItems: "center",
             marginHorizontal: "2%",
-            marginVertical: "2%",
             width: "96%",
-            paddingBottom: "20%",
           }}
         >
-          <View style={{ alignItems: "left" }}>
-            <Text style={{ fontSize: "25", width: "100%", alignItems: "left" }}>
-              {element.name}
-            </Text>
-            <Text style={{ fontSize: "15%", color: "grey", paddingTop: "3%" }}>
-              {element.description}
-            </Text>
-          </View>
-        </Card>
+          <Card
+            containerStyle={{
+              alignItems: "left",
+              width: "100%",
+              paddingBottom: "20%"
+            }}
+          >
+            <View style={{ alignItems: "left" }}>
+              <Text
+                style={{ fontSize: "25", width: "100%", alignItems: "left" }}
+              >
+                {element.name}
+              </Text>
+              <Text
+                style={{ fontSize: "15%", color: "grey", paddingTop: "3%" }}
+              >
+                {element.description}
+              </Text>
+            </View>
+          </Card>
+        </View>
       );
     });
   };
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "top" }}>
-      <ScrollView>{mapClasses()}</ScrollView>
+      <ScrollView style={{width: '100%'}}>{mapClasses()}</ScrollView>
     </View>
   );
 }
