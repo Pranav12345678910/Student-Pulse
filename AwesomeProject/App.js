@@ -70,74 +70,120 @@ function HomeScreen({ navigation }) {
 }
 
 function MyDataScreen({ navigation }) {
+  //in prep for backend
+  const myData = [
+    {
+      //arrays are filled with numerical data, one point for one day
+      pulse: 78,
+      Sleep: [],
+      StressLevel: [],
+      HomeworkTime: [],
+      Freetime: [],
+      Enjoyment: [],
+    },
+  ];
+
+  const mapData = () => {
+    return myData.map((element) => {
+      return (
+        <Text>placeholder</Text>
+      )
+    });
+  };
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "top" }}>
       <ScrollView style={styles.scrollView}>
-        <Card>
-          <Card.Title>Your pulse is ...</Card.Title>
+        <Card
+          containerStyle={{
+            alignItems: "center",
+            marginVertical: "2%",
+            paddingHorizontal:'10%',
+            paddingBottom: "10%",
+          }}
+        >
+          <Text style={{alignItems: 'left' }}>Your Pulse is ... </Text>
           <View>
             <Image
               source={require("/Users/austinfujimori/Desktop/Student-Pulse/AwesomeProject/images/pulse.png")}
             />
           </View>
         </Card>
+        {/* <View>
+          {mapData()}
+        </View> */}
       </ScrollView>
     </View>
   );
 }
 
-
 function MyClassesScreen({ navigation }) {
   //in prep for backend
-
   const myClasses = [
     {
-      name: "Poop Making"
+      name: "Poop Making",
+      description: "the making of poop",
     },
     {
-      name: "Basketball Moves"
+      name: "Basketball Moves",
+      description: "the art of Kobe Bryant",
     },
     {
-      name: "Sharting"
+      name: "Sharting",
+      description: "how to pass a shit as a fart",
     },
     {
-      name: "Civilian Abduction"
+      name: "Civilian Abduction",
+      description: "how to kidnap a random person without being caught",
     },
     {
-      name: "Catching an Assassin"
+      name: "Catching an Assassin",
+      description: "murdering the muderer",
     },
     {
-      name: "Self Defenese: Judo"
+      name: "Self Defenese: Judo",
+      description: "A helpful martial arts thing",
     },
     {
-      name: "The Art of Survival"
-    }
-  ]
+      name: "The Art of Survival",
+      description:
+        "Surviving is an art, the situations are always unique, like a painting",
+    },
+  ];
 
   const mapClasses = () => {
     return myClasses.map((element) => {
       return (
-        <Card>
-          <Card.Title>{element.name}</Card.Title>
-          <View>
-            <Text>{element.name}</Text>
+        <Card
+          containerStyle={{
+            alignItems: "left",
+            marginHorizontal: "2%",
+            marginVertical: "2%",
+            width: "96%",
+            paddingBottom: "20%",
+          }}
+        >
+          <View style={{ alignItems: "left" }}>
+            <Text style={{ fontSize: "25", width: "100%", alignItems: "left" }}>
+              {element.name}
+            </Text>
+            <Text style={{ fontSize: "15%", color: "grey", paddingTop: "3%" }}>
+              {element.description}
+            </Text>
           </View>
         </Card>
-      )
-    })
-  }
+      );
+    });
+  };
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "top" }}>
-      <ScrollView style={styles.scrollView}>
-        {mapClasses()}
-      </ScrollView>
+      <ScrollView>{mapClasses()}</ScrollView>
     </View>
   );
 }
 
 export default function App() {
-  
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
