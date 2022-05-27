@@ -17,6 +17,9 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 //Tab Navigation
 const Tab = createMaterialTopTabNavigator();
 
+//Stack Navigation
+const Stack = createNativeStackNavigator();
+
 function SurveyScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -45,37 +48,24 @@ function SurveyScreen({ navigation }) {
 function HomeScreen({ navigation }) {
   return (
     <Tab.Navigator
-        initialRouteName="Home"
-        screenOptions={{
-          tabBarActiveTintColor: "#e91e63",
-          tabBarLabelStyle: { fontSize: 12 },
-          tabBarStyle: { backgroundColor: "powderblue" },
-        }}
-      //   <TouchableOpacity
-      //   onPress={() => navigation.navigate("Survey")}
-      //   style={{
-      //     width: "100%",
-      //     alignItems: "center",
-      //     justifyContent: "top",
-      //     backgroundColor: "#eb7b76",
-      //     paddingTop: "1%",
-      //     paddingBottom: "1%",
-      //   }}
-      // >
-      //   <Text style={{ color: "white" }}>Take today's survey</Text>
-      // </TouchableOpacity>
-      >
-        <Tab.Screen
-          name="My Data"
-          component={MyDataScreen}
-          options={{ tabBarLabel: "My Data" }}
-        />
-        <Tab.Screen
-          name="My Classes"
-          component={MyClassesScreen}
-          options={{ tabBarLabel: "My Classes" }}
-        />
-      </Tab.Navigator>
+      initialRouteName="Home"
+      screenOptions={{
+        tabBarActiveTintColor: "white",
+        tabBarLabelStyle: { fontSize: 12 },
+        tabBarStyle: { backgroundColor: "#94d9c5" },
+      }}
+    >
+      <Tab.Screen
+        name="My Data"
+        component={MyDataScreen}
+        options={{ tabBarLabel: "My Data" }}
+      />
+      <Tab.Screen
+        name="My Classes"
+        component={MyClassesScreen}
+        options={{ tabBarLabel: "My Classes" }}
+      />
+    </Tab.Navigator>
   );
 }
 
@@ -98,14 +88,11 @@ function MyDataScreen({ navigation }) {
 function MyClassesScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "top" }}>
-      
       <ScrollView style={styles.scrollView}>
         <Card>
-          <Card.Title>Your pulse is ...</Card.Title>
+          <Card.Title>Class</Card.Title>
           <View>
-            <Text>
-              Classes
-            </Text>
+            <Text>Class</Text>
           </View>
         </Card>
       </ScrollView>
@@ -113,12 +100,12 @@ function MyClassesScreen({ navigation }) {
   );
 }
 
-const Stack = createNativeStackNavigator();
-
 export default function App() {
+  
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Survey" component={SurveyScreen} />
         <Stack.Screen
           name="Home"
           component={HomeScreen}
@@ -134,15 +121,19 @@ export default function App() {
               fontSize: "30px",
             },
             headerRight: () => (
-              <Button
-                onPress={() => alert("Information")}
-                title="Info"
-                color="#fff"
-              />
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Survey")}
+                style={{
+                  alignItems: "right",
+                  justifyContent: "top",
+                  backgroundColor: "#73b4a8",
+                }}
+              >
+                <Text style={{ color: "white" }}>Survey</Text>
+              </TouchableOpacity>
             ),
           }}
         />
-        <Stack.Screen name="Survey" component={SurveyScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
