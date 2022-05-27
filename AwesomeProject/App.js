@@ -121,33 +121,32 @@ function MyClassesScreen({ navigation }) {
   //in prep for backend
   const myClasses = [
     {
-      name: "Poop Making",
-      description: "the making of poop",
+      name: "AT Math",
+      description: "math",
     },
     {
-      name: "Basketball Moves",
-      description: "the art of Kobe Bryant",
+      name: "AP Physics 2",
+      description: "physics",
     },
     {
-      name: "Sharting",
-      description: "how to pass a shit as a fart",
+      name: "AP Statistics",
+      description: "statistics",
     },
     {
-      name: "Civilian Abduction",
-      description: "how to kidnap a random person without being caught",
+      name: "Test",
+      description: "test",
     },
     {
-      name: "Catching an Assassin",
-      description: "murdering the muderer",
+      name: "Test",
+      description: "Test",
     },
     {
-      name: "Self Defenese: Judo",
-      description: "A helpful martial arts thing",
+      name: "Test",
+      description: "Test",
     },
     {
-      name: "The Art of Survival",
-      description:
-        "Surviving is an art, the situations are always unique, like a painting",
+      name: "Test",
+      description: "Test",
     },
   ];
 
