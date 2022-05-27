@@ -85,16 +85,52 @@ function MyDataScreen({ navigation }) {
     </View>
   );
 }
+
+
 function MyClassesScreen({ navigation }) {
+  //in prep for backend
+
+  const myClasses = [
+    {
+      name: "Poop Making"
+    },
+    {
+      name: "Basketball Moves"
+    },
+    {
+      name: "Sharting"
+    },
+    {
+      name: "Civilian Abduction"
+    },
+    {
+      name: "Catching an Assassin"
+    },
+    {
+      name: "Self Defenese: Judo"
+    },
+    {
+      name: "The Art of Survival"
+    }
+  ]
+
+  const mapClasses = () => {
+    return myClasses.map((element) => {
+      return (
+        <Card>
+          <Card.Title>{element.name}</Card.Title>
+          <View>
+            <Text>{element.name}</Text>
+          </View>
+        </Card>
+      )
+    })
+  }
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "top" }}>
       <ScrollView style={styles.scrollView}>
-        <Card>
-          <Card.Title>Class</Card.Title>
-          <View>
-            <Text>Class</Text>
-          </View>
-        </Card>
+        {mapClasses()}
       </ScrollView>
     </View>
   );
@@ -121,16 +157,11 @@ export default function App() {
               fontSize: "30px",
             },
             headerRight: () => (
-              <TouchableOpacity
+              <Button
                 onPress={() => navigation.navigate("Survey")}
-                style={{
-                  alignItems: "right",
-                  justifyContent: "top",
-                  backgroundColor: "#73b4a8",
-                }}
-              >
-                <Text style={{ color: "white" }}>Survey</Text>
-              </TouchableOpacity>
+                title="Survey"
+                color="#fff"
+              />
             ),
           }}
         />
