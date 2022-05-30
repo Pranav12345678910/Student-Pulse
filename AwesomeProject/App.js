@@ -45,10 +45,10 @@ function SurveyScreen({ navigation }) {
   );
 }
 
-function HomeScreen({ navigation }) {
+function StudentHomeScreen({ navigation }) {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="StudentHome"
       screenOptions={{
         tabBarActiveTintColor: "white",
         tabBarLabelStyle: { fontSize: 12 },
@@ -66,6 +66,42 @@ function HomeScreen({ navigation }) {
         options={{ tabBarLabel: "My Classes" }}
       />
     </Tab.Navigator>
+  );
+}
+
+function TeacherHomeScreen({ navigation }) {
+  return (
+    <Tab.Navigator
+      initialRouteName="TeacherHome"
+      screenOptions={{
+        tabBarActiveTintColor: "white",
+        tabBarLabelStyle: { fontSize: 12 },
+        tabBarStyle: { backgroundColor: "#94d9c5" },
+      }}
+    >
+      <Tab.Screen
+        name="My Data"
+        component={MyDataScreen}
+        options={{ tabBarLabel: "My Data" }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+function ChooserScreen({ navigation }) {
+  return (
+    <View>
+      <Button
+        onPress={() => navigation.navigate("TeacherHome")}
+        title="Teacher"
+        color="black"
+      />
+            <Button
+        onPress={() => navigation.navigate("StudentHome")}
+        title="Student"
+        color="black"
+      />
+    </View>
   );
 }
 
@@ -133,7 +169,8 @@ function MyClassesScreen({ navigation }) {
     },
     {
       name: "Tester",
-      description: "TesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTester",
+      description:
+        "TesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTester",
     },
   ];
 
@@ -151,7 +188,7 @@ function MyClassesScreen({ navigation }) {
             containerStyle={{
               alignItems: "left",
               width: "100%",
-              paddingBottom: "20%"
+              paddingBottom: "20%",
             }}
           >
             <View style={{ alignItems: "left" }}>
@@ -174,7 +211,7 @@ function MyClassesScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "top" }}>
-      <ScrollView style={{width: '100%'}}>{mapClasses()}</ScrollView>
+      <ScrollView style={{ width: "100%" }}>{mapClasses()}</ScrollView>
     </View>
   );
 }
@@ -182,11 +219,11 @@ function MyClassesScreen({ navigation }) {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Chooser">
         <Stack.Screen name="Survey" component={SurveyScreen} />
         <Stack.Screen
-          name="Home"
-          component={HomeScreen}
+          name="StudentHome"
+          component={StudentHomeScreen}
           options={{
             title: "Student Pulse",
 
@@ -205,6 +242,38 @@ export default function App() {
                 color="#fff"
               />
             ),
+          }}
+        />
+        <Stack.Screen
+          name="TeacherHome"
+          component={TeacherHomeScreen}
+          options={{
+            title: "Student Pulse",
+
+            headerStyle: {
+              backgroundColor: "#73b4a8",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "light",
+              fontSize: "30px",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Chooser"
+          component={ChooserScreen}
+          options={{
+            title: "Student Pulse",
+
+            headerStyle: {
+              backgroundColor: "#73b4a8",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "light",
+              fontSize: "30px",
+            },
           }}
         />
       </Stack.Navigator>
